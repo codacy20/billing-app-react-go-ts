@@ -1,0 +1,51 @@
+.subscription-info {
+  background-color: #e74c3c;
+  color: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 300px;
+  max-height: 300px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.subscription-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.subscription-info h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+.subscription-info h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.subscription-info p {
+  font-size: 14px;
+  margin-bottom: 25px;
+  opacity: 0.9;
+}
+
+.cancel-btn {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%;
+  text-align: center;
+}
+
+.cancel-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
