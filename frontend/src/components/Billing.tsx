@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import './Billing.css';
 import { Download } from 'react-feather';
 
@@ -15,13 +15,13 @@ interface BillingResponse {
 }
 
 const Billing: React.FC = () => {
-  // Sample data as fallback
-  const sampleOrders = [
+  // Memoize sampleOrders to prevent it from changing on every render
+  const sampleOrders = useMemo(() => [
     { date: 'Oct. 21, 2021', type: 'Pro Annual' },
     { date: 'Aug. 21, 2021', type: 'Pro Portfolio' },
     { date: 'July. 21, 2021', type: 'Sponsored Post' },
     { date: 'Jun. 21, 2021', type: 'Sponsored Post' },
-  ];
+  ], []); // Empty dependency array means it will only be created once
 
   // State for orders, loading status, and error
   const [orders, setOrders] = useState<Order[]>(sampleOrders);
@@ -34,8 +34,8 @@ const Billing: React.FC = () => {
   // Get API URL from environment variables or use default
   const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8080';
 
-  // Function to fetch orders from the API
-  const fetchOrders = async (currentOffset: number, replace: boolean = false) => {
+  // Function to fetch orders from the API wrapped in useCallback
+  const fetchOrders = useCallback(async (currentOffset: number, replace: boolean = false) => {
     setLoading(true);
     setError(null);
 
@@ -68,12 +68,12 @@ const Billing: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [apiUrl, sampleOrders, total]);
 
   // Fetch orders on component mount
   useEffect(() => {
     fetchOrders(0, true);
-  }, []);
+  }, [fetchOrders]);
 
   // Handle "Load more" button click
   const handleLoadMore = () => {
