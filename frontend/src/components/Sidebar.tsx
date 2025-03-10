@@ -11,10 +11,12 @@ const Sidebar: React.FC = () => {
         </div>
         <div className="user-info">
           <h3>Amir</h3>
-          <p>@rt_amir</p>
+          <p>
+            <a href="https://github.com/codacy20">link to GitHub</a>
+          </p>
         </div>
       </div>
-      
+
       <ul className="menu-items">
         <li>
           <span className="icon"><Grid size={18} /></span>
@@ -37,7 +39,7 @@ const Sidebar: React.FC = () => {
           <span>Apps</span>
         </li>
       </ul>
-      
+
       <div className="logout">
         <span className="icon"><LogOut size={18} /></span>
         <span>Log out</span>

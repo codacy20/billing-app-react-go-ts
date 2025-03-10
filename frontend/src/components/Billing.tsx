@@ -99,30 +99,32 @@ const Billing: React.FC = () => {
             <span>Receipt</span>
           </div>
           
-          {orders.map((order, index) => (
-            <div className="table-row" key={index}>
-              <span className="date">{order.date}</span>
-              <span className="type">{order.type}</span>
-              <div className="receipt-cell">
-                <button className="download-btn">
-                  <Download size={14} style={{ marginRight: '5px' }} />
-                  Download
-                </button>
+          <div className="order-table-content">
+            {orders.map((order, index) => (
+              <div className="table-row" key={index}>
+                <span className="date">{order.date}</span>
+                <span className="type">{order.type}</span>
+                <div className="receipt-cell">
+                  <button className="download-btn">
+                    <Download size={14} style={{ marginRight: '5px' }} />
+                    Download
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
-          
-          {error && (
-            <div className="error-message">
-              {error}
-            </div>
-          )}
-          
-          {loading && (
-            <div className="loading-message">
-              Loading...
-            </div>
-          )}
+            ))}
+            
+            {error && (
+              <div className="error-message">
+                {error}
+              </div>
+            )}
+            
+            {loading && (
+              <div className="loading-message">
+                Loading...
+              </div>
+            )}
+          </div>
           
           {hasMore && (
             <div className="load-more">
